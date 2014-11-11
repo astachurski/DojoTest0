@@ -1,4 +1,12 @@
-<!DOCTYPE html><head><title>Hello Dojo</title><link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.1/dijit/themes/claro/claro.css" media="screen"><script src="dojo/dojo.js" data-dojo-config="async: true, parseOnLoad: true"></script><script>require([
+<!DOCTYPE html><head><title>Hello Dojo</title><link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.1/dijit/themes/soria/soria.css" media="screen"><script>var dojoConfig = {
+    packages: [
+        {
+            name: "demo",
+            location: "/js"
+        }
+    ]
+};
+</script><script src="dojo/dojo.js"></script><!--script.require([
     "dojo/parser",
     "dijit/form/NumberTextBox",
     "dijit/form/Button",
@@ -9,14 +17,19 @@
     "dijit/form/FilteringSelect",
     "dojo/domReady!"]
 );
-</script><style><div>{margin-bottom:50px;}</div><p:hover>{ color: #F76F76; }</p:hover></style></head><body class="claro"><div data-dojo-type="dijit/Dialog" id="foobar" title="Foo!"><p>I am some content</p></div><script>require(["dijit/Dialog.js","dojo/domReady!"],function(Dialog) {
+--><style><div>{margin-bottom:50px;}</div><p:hover>{ color: #F76F76; }</p:hover><div id="foobar">{ min-width: 300px; }</div><div id="dialog">{ min-width: 400px; }</div></style></head><body class="soria"><!--script.require(["dijit/Dialog"]);
+
+
+
+--><!--script.require(["dijit/Dialog.js","dojo/domReady!"],function(Dialog) {
             var myDialog = new Dialog({title: "Hello Dijit!"}, "foobar");
             myDialog.startup();
-            myDialog.show();
+            //myDialog.show();
         }
 )
 
-</script><div><h1>dupanka</h1></div><div id="mydiv"><br><div><label for="number">Age:</label><input id="number" type="text" value="67" required="true" data-dojo-type="dijit/form/NumberTextBox"></div><br><br><input id="date" value="2011-09-15" data-dojo-type="dijit/form/DateTextBox"><input id="time" required="true" data-dojo-type="dijit/form/TimeTextBox" data-dojo-props="constraints:{timePattern: 'HH:mm:ss', clickableIncrement: 'T00:15:00', visibleIncrement: 'T00:15:00', visibleRange: 'T01:00:00'},invalidMessage: 'bad time'"></div><h1 id="greeting">To jest test</h1><h1 id="greeting">To jest greeting</h1><div data-dojo-id="myStore" data-dojo-type="dojo/store/Memory" data-dojo-props="data:[{ name: 'Alabama', id: 'AL' },{ name: 'Alaska', id: 'AK' }, { name: 'Arizona', id: 'AZ' }, { name: 'California', id: 'CA' },  { name: 'Colorado', id: 'CO' },  { name: 'Connecticut', id: 'CT' }, { name: 'New York', id: 'NY' }]"></div><select id="mySelect" name="state" value="CA" data-dojo-type="dijit/form/FilteringSelect" data-dojo-props="searchAttr: 'name', store: myStore"></select><button id="myButt" type="button" data-dojo-type="dijit/form/Button" iconClass:'dijitIconNewTask showLabel:false>Click Me sucker@!</button><script>require(["js/anotherModule"], function (anotherModule) {
+--><!--div(data-dojo-type="dijit/Dialog" title="Hello Dijit!" id="someId")-->
+<div><h1>dupanka</h1></div><div id="mydiv"><br><div><label for="number">Age:</label><input id="number" type="text" value="67" required="true" data-dojo-type="dijit/form/NumberTextBox"></div><input id="date" value="2011-09-15" data-dojo-type="dijit/form/DateTextBox"><input id="time" required="true" data-dojo-type="dijit/form/TimeTextBox" data-dojo-props="constraints:{timePattern: 'HH:mm:ss', clickableIncrement: 'T00:15:00', visibleIncrement: 'T00:15:00', visibleRange: 'T01:00:00'},invalidMessage: 'bad time'"></div><h1 id="greeting">To jest test</h1><h1 id="greeting">To jest greeting</h1><div data-dojo-id="myStore" data-dojo-type="dojo/store/Memory" data-dojo-props="data:[{ name: 'Alabama', id: 'AL' },{ name: 'Alaska', id: 'AK' }, { name: 'Arizona', id: 'AZ' }, { name: 'California', id: 'CA' },  { name: 'Colorado', id: 'CO' },  { name: 'Connecticut', id: 'CT' }, { name: 'New York', id: 'NY' }]"></div><select id="mySelect" name="state" value="CA" data-dojo-type="dijit/form/FilteringSelect" data-dojo-props="searchAttr: 'name', store: myStore"></select><button id="myButt" type="button" data-dojo-type="dijit/form/Button" iconClass:'dijitIconNewTask showLabel:false>Click Me sucker@!</button><script>require(["js/anotherModule"], function (anotherModule) {
     anotherModule.logMe("from anotheModule!");
 });
 </script><script>require([
@@ -27,9 +40,20 @@
         myModule.restoreText('greeting')
     }, 3000)
 });
-</script><ul id="list"><li class="odd">pierwszy element<h1 class="italic">testowy italic</h1></li><li class="even">drugi element</li><li>jakiś inny</li></ul><!-- require the query, dom, and domReady modules--><script>require(["dojo/query", "dojo/dom", "dojo/domReady!"], function (query, dom) {
-    // retrieve an array of nodes with the ID "list"
-    var list = query("#list")[0];
-    var test = query(".italic");
+</script><ul id="list"><li class="odd">pierwszy element<h1 class="italic">testowy italic</h1></li><li class="even">drugi element</li><li>jakiś inny</li></ul><!--div#foobar(data-dojo-type="dijit/Dialog", title="Foo!", data-dojo-props="title: 'dupajajo'")p this is my
+h2 fucking
+h1 content !
+--><!--script.require(["dijit/registry", "dojo/parser", "dojo/json", "dojo/_base/config", "dijit/Dialog", "dojo/domReady!"],
+        function (registry, parser, JSON, config) {
+    parser.parse();
+    var myDialog = registry.byId("foobar");
+    myDialog.show();
 })
-</script><!--parseOnLoad: true"--></body>
+--><div id="dialog" data-dojo-type="js/MyDialog" data-dojo-props="title: 'dojo/_base/config.baseUrl demo', authorAvatarSrc: '/includes/authors/sam_foster/avatar.jpg', authorName: 'Sam Foster'"></div><script>require(["js/MyDialog", "dijit/registry", "dojo/json", "dojo/_base/config",
+            "dojo/parser", "dojo/domReady!"],
+        function(myDialog, registry, JSON, config, parser) {
+            parser.parse();
+            var dialog = registry.byId("dialog");
+            dialog.set("content", "<pre>" + JSON.stringify(config, null, "\t") + "</pre>");
+            dialog.show();
+        });</script></body>

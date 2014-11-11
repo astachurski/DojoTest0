@@ -2,10 +2,20 @@ doctype html
 
 head
     title Hello Dojo
-    link(rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.1/dijit/themes/claro/claro.css" media="screen")
+    link(rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.1/dijit/themes/soria/soria.css" media="screen")
 
-    script(src="dojo/dojo.js", data-dojo-config="async: true, parseOnLoad: true")
     script.
+        var dojoConfig = {
+            packages: [
+                {
+                    name: "demo",
+                    location: "/js"
+                }
+            ]
+        };
+
+    script(src="dojo/dojo.js")
+    //script.
         require([
             "dojo/parser",
             "dijit/form/NumberTextBox",
@@ -21,20 +31,27 @@ head
     style
         div {margin-bottom:50px;}
         p:hover { color: #F76F76; }
+        #foobar { min-width: 300px; }
+        #dialog { min-width: 400px; }
 
-body.claro
+body.soria
 
-    div(data-dojo-type="dijit/Dialog", id="foobar", title="Foo!")
-        p I am some content
+    //script.
+        require(["dijit/Dialog"]);
 
 
-    script.
+
+
+    //script.
         require(["dijit/Dialog.js","dojo/domReady!"],function(Dialog) {
                     var myDialog = new Dialog({title: "Hello Dijit!"}, "foobar");
                     myDialog.startup();
-                    myDialog.show();
+                    //myDialog.show();
                 }
         )
+
+
+    //div(data-dojo-type="dijit/Dialog" title="Hello Dijit!" id="someId")
 
 
     div
@@ -53,9 +70,6 @@ body.claro
             value="67"
             required="true"
             data-dojo-type="dijit/form/NumberTextBox")
-
-        br
-        br
 
         input#date(
             value="2011-09-15"
@@ -107,12 +121,34 @@ body.claro
         li.even drugi element
         li jakiś inny
 
-    // require the query, dom, and domReady modules
-    script.
-        require(["dojo/query", "dojo/dom", "dojo/domReady!"], function (query, dom) {
-            // retrieve an array of nodes with the ID "list"
-            var list = query("#list")[0];
-            var test = query(".italic");
+
+    //div#foobar(data-dojo-type="dijit/Dialog", title="Foo!", data-dojo-props="title: 'dupajajo'")
+        p this is my
+        h2 fucking
+        h1 content !
+
+    //script.
+        require(["dijit/registry", "dojo/parser", "dojo/json", "dojo/_base/config", "dijit/Dialog", "dojo/domReady!"],
+                function (registry, parser, JSON, config) {
+            parser.parse();
+            var myDialog = registry.byId("foobar");
+            myDialog.show();
         })
 
-    //parseOnLoad: true"
+    div#dialog(
+        data-dojo-type="js/MyDialog"
+        data-dojo-props="title: 'dojo/_base/config.baseUrl demo', authorAvatarSrc: '/includes/authors/sam_foster/avatar.jpg', authorName: 'Sam Foster'")
+
+
+    script.
+        require(["js/MyDialog", "dijit/registry", "dojo/json", "dojo/_base/config",
+                    "dojo/parser", "dojo/domReady!"],
+                function(myDialog, registry, JSON, config, parser) {
+                    parser.parse();
+                    var dialog = registry.byId("dialog");
+                    dialog.set("content", "<pre>" + JSON.stringify(config, null, "\t") + "</pre>");
+                    dialog.show();
+                });
+
+
+
