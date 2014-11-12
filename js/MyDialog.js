@@ -3,7 +3,7 @@
  */
 define(["dojo/_base/declare", "dijit/Dialog"], function(declare, Dialog) {
 
-    return declare("demo.MyDialog", Dialog, {
+    return declare("MyDialog", Dialog, {
         authorNode: null,
         authorAvatarSrc: "",
         authorName: "",

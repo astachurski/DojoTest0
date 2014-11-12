@@ -1,0 +1,52 @@
+doctype html
+head
+   title Hello Dojo
+   link(rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.1/dijit/themes/soria/soria.css" media="screen")
+
+   script.
+      var dojoConfig = {
+         parseOnLoad: false,
+         packages: [
+            {
+               name: "bubu",
+               location: "/js"
+            }
+         ]
+      };
+   script(src="dojo/dojo.js")
+
+body.soria
+
+p dupa !
+
+div(style="width: 650px; height: 190px")
+   div#tc1-prog
+
+
+script.
+   require(["dijit/layout/TabContainer", "dijit/layout/ContentPane", "dojo/parser", "dojo/domReady!"], function(TabContainer, ContentPane, parser){
+
+      //parser.parse();
+
+      var tc = new TabContainer({
+                     style: "height: 100%; width: 100%;"
+                  },
+              "tc1-prog");
+
+      var cp1 = new ContentPane({
+                     title: "Food",
+                     content: "We offer amazing food"
+                     });
+
+      tc.addChild(cp1);
+
+      var cp2 = new ContentPane({
+                     title: "Drinks",
+                     content: "We are known for our drinks."
+                     });
+
+      tc.addChild(cp2);
+
+      tc.startup();
+
+   });

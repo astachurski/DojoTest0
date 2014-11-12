@@ -6,9 +6,10 @@ head
 
     script.
         var dojoConfig = {
+            parseOnLoad: false,
             packages: [
                 {
-                    name: "demo",
+                    name: "bubu",
                     location: "/js"
                 }
             ]
@@ -37,10 +38,10 @@ head
 body.soria
 
     //script.
-        require(["dijit/Dialog"]);
-
-
-
+        require(["js/myutil/Person"], function (Person) {
+            var folk = new Person("phiggins", 42, "Tennessee");
+            console.log(folk.name);
+        });
 
     //script.
         require(["dijit/Dialog.js","dojo/domReady!"],function(Dialog) {
@@ -59,17 +60,23 @@ body.soria
 
     div#mydiv
 
-        br
-
         div
             label(for="number") Age:
 
             input(
-            id="number"
-            type="text"
-            value="67"
-            required="true"
-            data-dojo-type="dijit/form/NumberTextBox")
+                id="number"
+                type="text"
+                value="67"
+                required="true"
+                data-dojo-type="dijit/form/NumberTextBox"
+            )
+
+        script.
+            require(["dijit/form/DateTextBox","dojo/parser","dojo/domReady!"],
+                function(DateTextBox, parser){
+                    parser.parse();
+                });
+
 
         input#date(
             value="2011-09-15"
@@ -92,10 +99,10 @@ body.soria
 
 
     button#myButt(
-        type="button",
-        data-dojo-type="dijit/form/Button",
-        iconClass:'dijitIconNewTask',
-        showLabel:false
+    type="button",
+    data-dojo-type="dijit/form/Button",
+    iconClass:'dijitIconNewTask',
+    showLabel:false
 
     ) Click Me sucker@!
 
@@ -122,6 +129,9 @@ body.soria
         li jakiś inny
 
 
+    //include ./dialogtest.jade
+
+
     //div#foobar(data-dojo-type="dijit/Dialog", title="Foo!", data-dojo-props="title: 'dupajajo'")
         p this is my
         h2 fucking
@@ -135,20 +145,17 @@ body.soria
             myDialog.show();
         })
 
-    div#dialog(
-        data-dojo-type="js/MyDialog"
-        data-dojo-props="title: 'dojo/_base/config.baseUrl demo', authorAvatarSrc: '/includes/authors/sam_foster/avatar.jpg', authorName: 'Sam Foster'")
-
+    div#test
+    button#testBtn Say Fucking Hello
 
     script.
-        require(["js/MyDialog", "dijit/registry", "dojo/json", "dojo/_base/config",
-                    "dojo/parser", "dojo/domReady!"],
-                function(myDialog, registry, JSON, config, parser) {
-                    parser.parse();
-                    var dialog = registry.byId("dialog");
-                    dialog.set("content", "<pre>" + JSON.stringify(config, null, "\t") + "</pre>");
-                    dialog.show();
-                });
+        require(["js/myutil/ButtonHandler"],function(ButtonHandler){
+            var a = new ButtonHandler();
+            a.init();
+        })
+
+
+
 
 
 

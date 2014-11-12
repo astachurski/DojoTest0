@@ -1,0 +1,17 @@
+div#dialog(
+        data-dojo-type="js/MyDialog"
+        data-dojo-props="title: 'dojo/_base/config.baseUrl demo', authorAvatarSrc: '/includes/authors/sam_foster/avatar.jpg', authorName: 'Sam Foster'")
+        script.
+            require(["js/MyDialog", "dijit/registry", "dojo/json", "dojo/_base/config",
+                        "dojo/parser", "js/myutil/Person", "dojo/domReady!"],
+                    function (myDialog, registry, JSON, config, parser, Person) {
+                        parser.parse();
+                        var dialog = registry.byId("dialog");
+                        var folk = new Person("phiggins", 42, "Tennessee");
+                        //dialog.set(folk.name);
+                        dialog.set("content", "<pre>" + folk.name + "</pre>");
+                        dialog.show();
+                    });
+
+
+
